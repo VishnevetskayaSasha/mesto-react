@@ -1,0 +1,26 @@
+.profile__avatar-hover {
+  cursor: pointer;
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url(../../../images/button-hover.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px;
+  opacity: 0;
+  border: none;
+  transition: opacity 0.5s;
+}
+
+.profile__avatar-hover:hover {
+  opacity: 1;
+}
+
+@media screen and (max-width: 555px) {
+  .profile__avatar-hover {
+    top: 0;
+    left: 19px;
+  }
+}

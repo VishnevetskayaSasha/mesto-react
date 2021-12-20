@@ -1,0 +1,20 @@
+.element__delete {
+  background-image: url(../../../images/delete-button.svg);
+  background-color: transparent;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 18px; /*  добавить нормальное позиционирование, когда иконка появится в макете. В макете так ничего не добавили :( */
+  height: 19.3px;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.element__delete:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

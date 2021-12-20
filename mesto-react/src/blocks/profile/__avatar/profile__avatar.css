@@ -1,0 +1,15 @@
+.profile__avatar {
+  padding: 0;
+  width: 120px;
+  height: 120px;
+  margin-right: 30px;
+  border-radius: 50%;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+@media screen and (max-width: 555px) {
+  .profile__avatar {
+    margin: 0;
+  }
+}
