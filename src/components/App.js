@@ -106,13 +106,13 @@ function App() {
             required />
           <span id="edit-link-error" className="error"></span>
         </PopupWithForm>
-        <PopupWithForm // попап подтверждения удаления
+        <PopupWithForm // попап подтверждения удаления (!!! Если у компонента нет вложенных элементов, лучше делать сразу самозакрывающийся тег)
           name="delete"
           nameForm="delete-form"
           title="Вы уверены?"
           button="delete"
           text="Да"
-        ></PopupWithForm>
+        />
         <PopupWithForm // попап аватара
           name="avatar"
           nameForm="avatar-form"
@@ -134,7 +134,7 @@ function App() {
         <ImagePopup // попап фулскрин картинки
            card={selectedCard}
            onClose={closeAllPopups}
-        ></ImagePopup>
+        />
       </div> 
   );
 }

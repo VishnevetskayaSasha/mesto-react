@@ -5,7 +5,7 @@ import Card from "./Card.js";
 
 function Main({onEditProfile, onEditAvatar, onAddPlace, onCardClick}) {
 
-  const [userInfo, setUserInfo] = React.useState({userName:'', userDescription:'', userAvatar:''});
+  const [userInfo, setUserInfo] = React.useState({});
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
