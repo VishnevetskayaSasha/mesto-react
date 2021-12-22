@@ -29,7 +29,7 @@ function Main({onEditProfile, onEditAvatar, onAddPlace, onCardClick}) {
     <main className="content">
     <section className="profile">
       <div className="profile__general-information">
-        <img src={`${userInfo.userAvatar}`} alt="Аватар" className="profile__avatar"/>
+      <img src={ userInfo?.userAvatar ? userInfo.userAvatar: 'https://my-engine.ru/modules/users/avatar.png'} alt="Аватар" className="profile__avatar"/>
         <button className="profile__avatar-hover" onClick={onEditAvatar}></button>
         <div className="profile__info">
           <div className="profile__name-string">
