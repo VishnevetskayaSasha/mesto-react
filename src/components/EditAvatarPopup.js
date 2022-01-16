@@ -7,7 +7,7 @@ function EditAvatarPopup(props) {
   // при отерытии попапа поле будет пустое
   React.useEffect(() => {
     avatarRef.current.value = ""
-  })
+  }, [props.isOpen])
 
   function handleSubmit(evant) {
     // Запрещаем браузеру переходить по адресу формы (перезагружать страницу)

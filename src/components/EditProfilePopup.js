@@ -11,7 +11,7 @@ function EditProfilePopup(props) {
 React.useEffect(() => {
   setName(currentUser.name);
   setDescription(currentUser.about);
-}, [currentUser]);
+}, [currentUser, props.isOpen]); 
 
   // Стейт, в котором содержится значение инпута
   const [name, setName] = React.useState("");
