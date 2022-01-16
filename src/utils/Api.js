@@ -69,12 +69,12 @@
       method: "POST", 
       headers: this._headers,
       body: JSON.stringify({
-        name: data.title,
+        name: data.name,
         link: data.link
       }) 
     })
     .then((responce) => {
-     // console.log(data)
+     //console.log(data)
       return this._checkLineOk(responce)
     }) 
   }
@@ -90,28 +90,17 @@
     }) 
   }
 
-  //добавление лайка 
-  addLike(cardId) {
-    return fetch(`${this._url}cards/likes/${cardId}`, { 
-      method: "PUT", 
+  // добавление / удаление лайка
+  changeLikeCardStatus(cardId, isLiked) {
+    return fetch(`${this._url}cards/likes/${cardId}`, {
+      method: (isLiked ? "PUT" : "DELETE"),
       headers: this._headers,
     })
     .then((responce) => {
       return this._checkLineOk(responce)
     }) 
   }
-
-  //удаление лайка 
-  deleteLike(cardId) {
-    return fetch(`${this._url}cards/likes/${cardId}`, { 
-      method: "DELETE", 
-      headers: this._headers,
-    })
-    .then((responce) => {
-      return this._checkLineOk(responce)
-    }) 
-  }
-  }
+  } 
 
   const api = new Api ({
     url: "https://mesto.nomoreparties.co/v1/cohort-30/",

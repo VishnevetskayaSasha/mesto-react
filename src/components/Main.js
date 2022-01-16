@@ -1,42 +1,22 @@
 import React from "react";
-import api from "../utils/Api.js"
 import Card from "./Card.js";
+import CurrentUserContext from "../contexts/CurrentUserContext.js";
 
+function Main({onEditProfile, onEditAvatar, onAddPlace, onCardClick, onCardLike, onCardDelete, cards}) {
 
-function Main({onEditProfile, onEditAvatar, onAddPlace, onCardClick}) {
-
-  const [userInfo, setUserInfo] = React.useState({});
-  const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    // Получаем данные с сервера (Данные профиля + данные карточек)
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-    .then((data) => {
-      setUserInfo({
-          userName: data[0].name,
-          userDescription: data[0].about,
-          userAvatar: data[0].avatar
-      });
-      setCards(data[1]);
-  })
-  .catch((err) => {
-    console.log(`Ошибка: ${err}`);
-  })
-}, []) // второй параметр в хуке указываем пустой массив, чтоб не отправлялось куча запросов, а только один. 
-
-
+  const currentUser = React.useContext(CurrentUserContext); // Подписываемся на контекст CurrentUserContext
   return (
     <main className="content">
     <section className="profile">
       <div className="profile__general-information">
-      <img src={ userInfo?.userAvatar ? userInfo.userAvatar: 'https://my-engine.ru/modules/users/avatar.png'} alt="Аватар" className="profile__avatar"/>
+      <img src={ currentUser?.avatar ? currentUser.avatar: 'https://pcvector.ru/800/600/https/www.ngi.no/bundles/ngino/images/spinner.gif'} alt="Аватар" className="profile__avatar"/>
         <button className="profile__avatar-hover" onClick={onEditAvatar}></button>
         <div className="profile__info">
           <div className="profile__name-string">
-            <h1 className="profile__name">{userInfo.userName}</h1> 
+            <h1 className="profile__name">{currentUser.name}</h1> 
             <button type="button" className="profile__button-edit" onClick={onEditProfile}></button>
           </div>
-          <p className="profile__description">{userInfo.userDescription}</p>
+          <p className="profile__description">{currentUser.about}</p>
         </div>
       </div>
         <button type="button" className="profile__button-add" onClick={onAddPlace}></button>
@@ -49,17 +29,19 @@ function Main({onEditProfile, onEditAvatar, onAddPlace, onCardClick}) {
                 key={card._id}
                 link={card.link}
                 name={card.name}
-                likes={card.likes.length}
+                likes={card.likes.length} 
                 card={card}
                 onCardClick={onCardClick}
-            ></Card>
-            )
-          })
-        }
+                onCardLike={onCardLike}
+                onCardDelete={onCardDelete}
+            />
+          )
+  })
+}
       </ul>
     </section>
   </main>
-  )
+  );
 }
 
 export default Main
